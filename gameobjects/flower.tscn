@@ -14,6 +14,10 @@ scale = Vector2(0.99033, -0.995123)
 color = Color(0.90732, 0.429792, 0.667496, 1)
 polygon = PackedVector2Array(0, 32.1568, -8.07812, 8.03921, -32.3125, 0, -8.07812, -8.03921, 0, -32.1568, 8.07812, -8.03921, 32.3125, 0, 8.07812, 8.03921)
 
+[node name="Polygon2D2" type="Polygon2D" parent="."]
+color = Color(1, 0.8127, 0.401352, 1)
+polygon = PackedVector2Array(0, -7, -4, -5, -6, -1, -4, 3, 0, 5, 4, 3, 6, 0, 4, -5)
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_vc5f3")
 

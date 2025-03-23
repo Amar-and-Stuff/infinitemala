@@ -12,6 +12,9 @@ func _ready() -> void:
 	var sb = StyleBoxFlat.new()
 	health_bar.add_theme_stylebox_override("fill", sb)
 	sb.bg_color = Color("ff0000")
+	var sbp = StyleBoxFlat.new()
+	progress_bar.add_theme_stylebox_override("fill", sbp)
+	sbp.bg_color = Color("22abff")
 
 func _process(delta: float) -> void:
 	position = get_global_mouse_position()

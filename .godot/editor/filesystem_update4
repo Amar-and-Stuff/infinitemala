@@ -9,3 +9,4 @@ res://UIComponents/generic_button/generic_button.tscn
 res://world/level.gd
 res://gameobjects/flower.gd
 res://gameobjects/seed.gd
+res://player/player.gd
