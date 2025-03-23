@@ -1,0 +1,63 @@
+[gd_scene load_steps=5 format=3 uid="uid://gaucg8prrhwt"]
+
+[ext_resource type="Theme" uid="uid://7o2thlahxs0j" path="res://UIComponents/themes/default_theme.tres" id="1_t784m"]
+[ext_resource type="Script" uid="uid://dkvgxv2m06kf4" path="res://UIComponents/mainmenu/main_menu.gd" id="1_uai1b"]
+[ext_resource type="PackedScene" uid="uid://jbjtavcs037k" path="res://UIComponents/generic_button/generic_button.tscn" id="4_slpvq"]
+[ext_resource type="AudioStream" uid="uid://de8lwh1i0tli0" path="res://UIComponents/mainmenu/golucky.oggvorbis.ogg" id="8_kjr6b"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_t784m")
+script = ExtResource("1_uai1b")
+game_scene_file = "uid://8i1iogbundoh"
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.137255, 0.219608, 0.290196, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -121.0
+offset_top = -109.0
+offset_right = 121.0
+offset_bottom = 109.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Play" parent="Panel/VBoxContainer" instance=ExtResource("4_slpvq")]
+layout_mode = 2
+text = "Play"
+
+[node name="Quit" parent="Panel/VBoxContainer" instance=ExtResource("4_slpvq")]
+layout_mode = 2
+text = "Quit"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_kjr6b")
+autoplay = true
+
+[connection signal="click" from="Panel/VBoxContainer/Play" to="." method="_on_play_click"]
+[connection signal="click" from="Panel/VBoxContainer/Quit" to="." method="_on_quit_click"]

@@ -1,0 +1,52 @@
+[gd_scene load_steps=3 format=3 uid="uid://e6wf7ccxvdjm"]
+
+[ext_resource type="Script" uid="uid://6o4hf10duwis" path="res://player/player.gd" id="1_i48jb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1vnoc"]
+
+[node name="Player" type="Area2D"]
+script = ExtResource("1_i48jb")
+
+[node name="Line2D" type="Line2D" parent="."]
+visible = false
+points = PackedVector2Array(0, 0, 0, 32, 0, 60, 0, 90, 0, 120, 0, 150)
+width = 3.0
+default_color = Color(0.105882, 0.105882, 0.105882, 1)
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(0.106258, 0.106258, 0.106258, 1)
+polygon = PackedVector2Array(0, -11, -7, -8, -10, 0, -7, 9, 0, 11, 8, 8, 11, 0, 8, -8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_1vnoc")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HealthBar" type="ProgressBar" parent="CanvasLayer/UI"]
+layout_mode = 1
+offset_left = 127.0
+offset_top = 131.0
+offset_right = 434.0
+offset_bottom = 167.0
+value = 100.0
+show_percentage = false
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/UI"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 33.0
+offset_top = 28.0
+offset_right = -33.0
+offset_bottom = 39.0
+grow_horizontal = 2
+value = 100.0
+show_percentage = false

@@ -1,0 +1,11 @@
+res://world/level.tscn
+res://player/player.tscn
+res://player/thread.tscn
+res://gameobjects/flower.tscn
+res://gameobjects/seed.tscn
+res://UIComponents/mainmenu/main_menu.tscn
+res://UIComponents/retry/retry.tscn
+res://UIComponents/generic_button/generic_button.tscn
+res://world/level.gd
+res://gameobjects/flower.gd
+res://gameobjects/seed.gd

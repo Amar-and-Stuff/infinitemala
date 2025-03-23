@@ -1,0 +1,62 @@
+[gd_scene load_steps=9 format=3 uid="uid://8i1iogbundoh"]
+
+[ext_resource type="PackedScene" uid="uid://e6wf7ccxvdjm" path="res://player/player.tscn" id="1_olurn"]
+[ext_resource type="Script" uid="uid://dpfxxljyicr7o" path="res://world/level.gd" id="1_tap5u"]
+[ext_resource type="PackedScene" uid="uid://bof3fsgimcmlt" path="res://player/thread.tscn" id="2_70ls8"]
+[ext_resource type="AudioStream" uid="uid://cty54k5svhrca" path="res://music/action loop.wav" id="5_oh72w"]
+[ext_resource type="PackedScene" uid="uid://bdoov14pa7dr4" path="res://UIComponents/retry/retry.tscn" id="5_ype84"]
+[ext_resource type="AudioStream" uid="uid://d2m6ymi0frsyk" path="res://music/footstep_snow_000.mp3" id="6_paclj"]
+[ext_resource type="AudioStream" uid="uid://bo2kuycrkv7l0" path="res://music/impactWood_light_002.mp3" id="7_aohy4"]
+
+[sub_resource type="Curve2D" id="Curve2D_tap5u"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 2006, 1116, 0, 0, 0, 0, 1992, -79, 0, 0, 0, 0, -94, -93, 0, 0, 0, 0, -100, 1143, 0, 0, 0, 0, 2006, 1116)
+}
+point_count = 5
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_tap5u")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(0.873376, 0.746503, 0.494126, 1)
+polygon = PackedVector2Array(-28, -39, -41, 1161, 2037, 1154, 2009, -51)
+
+[node name="Player" parent="." node_paths=PackedStringArray("thread") instance=ExtResource("1_olurn")]
+thread = NodePath("../Thread")
+
+[node name="Thread" parent="." node_paths=PackedStringArray("follow_node") instance=ExtResource("2_70ls8")]
+follow_node = NodePath("../Player")
+
+[node name="Seeds" type="Node2D" parent="."]
+
+[node name="SpawnPath2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_tap5u")
+
+[node name="InstancePoint" type="PathFollow2D" parent="SpawnPath2D"]
+position = Vector2(2006, 1116)
+rotation = -1.58251
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="Retry" parent="HUD" instance=ExtResource("5_ype84")]
+visible = false
+bg_color = Color(0.264662, 0.651978, 0.893742, 1)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_oh72w")
+volume_db = -11.039
+autoplay = true
+
+[node name="FlowerSFXPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_paclj")
+
+[node name="SeedSFXPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_aohy4")
+
+[connection signal="area_entered" from="Player" to="." method="_on_player_area_entered"]
+[connection signal="dead" from="Player" to="." method="_on_player_dead"]
+[connection signal="won" from="Player" to="." method="_on_player_won"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

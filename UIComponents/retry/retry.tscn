@@ -1,0 +1,69 @@
+[gd_scene load_steps=3 format=3 uid="uid://bdoov14pa7dr4"]
+
+[ext_resource type="PackedScene" uid="uid://jbjtavcs037k" path="res://UIComponents/generic_button/generic_button.tscn" id="1_1lkiw"]
+[ext_resource type="Script" uid="uid://dfhls43kx806e" path="res://UIComponents/retry/retry.gd" id="1_sx3qq"]
+
+[node name="Retry" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sx3qq")
+game_scene_file = "uid://8i1iogbundoh"
+win_color = Color(0.29703, 0.6479, 0.778335, 1)
+lost_color = Color(0.717237, 0.339751, 0.339751, 1)
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.309918, 0.155894, 0.14273, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -111.0
+offset_top = 46.0
+offset_right = 101.0
+offset_bottom = 275.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Retry" parent="Panel/VBoxContainer" instance=ExtResource("1_1lkiw")]
+layout_mode = 2
+text = "Play again
+"
+
+[node name="ScoreLable" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = -167.0
+offset_right = 115.0
+offset_bottom = -68.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "You lost"
+
+[connection signal="click" from="Panel/VBoxContainer/Retry" to="." method="_on_retry_pressed"]

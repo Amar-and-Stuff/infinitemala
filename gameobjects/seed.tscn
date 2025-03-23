@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://v7ccii7sf3ol"]
+
+[ext_resource type="Script" uid="uid://60r0vg417y8s" path="res://gameobjects/seed.gd" id="1_t0qss"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lgb04"]
+radius = 19.57
+
+[node name="Seed" type="Area2D" groups=["seed"]]
+script = ExtResource("1_t0qss")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+scale = Vector2(2.12979, 2.04418)
+color = Color(0.377804, 0.251918, 0.131755, 1)
+polygon = PackedVector2Array(3, -17, -12, -8, -17, 0, -11, 13, 10, 14, 17, 2, 10, -10)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(2.12979, 2.04418)
+shape = SubResource("CircleShape2D_lgb04")
