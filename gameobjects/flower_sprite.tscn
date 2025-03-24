@@ -6,24 +6,11 @@
 script = ExtResource("1_ny8a4")
 
 [node name="Petals" type="Polygon2D" parent="."]
-visible = false
-scale = Vector2(0.99033, -0.995123)
-color = Color(0.995572, 0.995572, 0.995572, 1)
-polygon = PackedVector2Array(0, 32.1568, -8.07812, 8.03921, -32.3125, 0, -8.07812, -8.03921, 0, -32.1568, 8.07812, -8.03921, 32.3125, 0, 8.07812, 8.03921)
-
-[node name="ExtraPetals" type="Polygon2D" parent="."]
-visible = false
-rotation = 0.785398
-scale = Vector2(0.99033, -0.995123)
-color = Color(0.995572, 0.995572, 0.995572, 1)
-polygon = PackedVector2Array(0, 32.1568, -8.07812, 8.03921, -32.3125, 0, -8.07812, -8.03921, 0, -32.1568, 8.07812, -8.03921, 32.3125, 0, 8.07812, 8.03921)
-
-[node name="Petals2" type="Polygon2D" parent="."]
 scale = Vector2(0.99033, -0.995123)
 color = Color(0.995572, 0.995572, 0.995572, 1)
 polygon = PackedVector2Array(0, 32.1568, -8.07812, 28.1372, -2.01953, 8.03921, -8.07812, 2.0098, -28.2734, 8.03921, -32.3125, 0, -28.2734, -8.03921, -8.07812, -2.0098, -2.01953, -6.0294, -8.07812, -28.1372, 0, -32.1568, 8.07812, -28.1372, 2.01953, -6.0294, 8.07812, -2.0098, 28.2734, -8.03921, 32.3125, 0, 28.2734, 8.03921, 8.07812, 2.0098, 2.01953, 8.03921, 8.07812, 28.1372)
 
-[node name="ExtraPetals2" type="Polygon2D" parent="."]
+[node name="ExtraPetals" type="Polygon2D" parent="."]
 rotation = 0.785398
 scale = Vector2(0.99033, -0.995123)
 color = Color(0.995572, 0.995572, 0.995572, 1)

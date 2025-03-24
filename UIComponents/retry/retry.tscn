@@ -65,5 +65,6 @@ offset_bottom = -68.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "You lost"
+horizontal_alignment = 1
 
 [connection signal="click" from="Panel/VBoxContainer/Retry" to="." method="_on_retry_pressed"]

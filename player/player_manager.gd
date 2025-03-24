@@ -2,11 +2,14 @@ extends Node2D
 
 signal won
 signal dead
-signal seed_impact
+signal damage_impact
+signal heal_taken
 
 @onready var player: Area2D = $Player
 @onready var thread: Path2D = $Thread
 @onready var seed_sfx_player: AudioStreamPlayer = $SeedSFXPlayer
+@onready var chakram_sfx_player: AudioStreamPlayer = $ChakramSFXPlayer
+@onready var health_sfx_player: AudioStreamPlayer = $HealthSFXPlayer
 @onready var health_bar: ProgressBar = $CanvasLayer/UI/HealthBar
 @onready var progress_bar: ProgressBar = $CanvasLayer/UI/ProgressBar
 @onready var health_bar_x: float = health_bar.position.x
@@ -24,16 +27,13 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	progress_bar.value = len(thread.follower_nodes) * 5
+	health_bar.value = player.health
 	if health_bar.value < 30:
 		shake_health_bar()
 
 
 func _on_player_dead() -> void:
 	dead.emit()
-
-
-func _on_player_won() -> void:
-	won.emit()
 
 
 func shake_health_bar() -> void:
@@ -44,8 +44,7 @@ func shake_health_bar() -> void:
 
 func add_flower() -> void:
 	thread.add_flower()
-	if len(thread.follower_nodes) == 20:
-		won.emit()
+
 
 
 func _on_player_area_entered(area: Area2D) -> void:
@@ -54,12 +53,21 @@ func _on_player_area_entered(area: Area2D) -> void:
 		seed_sfx_player.play()
 		area.queue_free()
 		add_flower()
+	if area.is_in_group('obstacle'):
+		chakram_sfx_player.play()
+		area.queue_free()
+		player.take_damage(10)
+		damage_impact.emit()
+	if area.is_in_group('health'):
+		heal_taken.emit()
+		health_sfx_player.play()
+		area.queue_free()
+		player.heal(7)
 
 
 func _on_thread_flower_damaged() -> void:
-	player.take_damage()
-	seed_impact.emit()
-	health_bar.value = player.health
+	player.take_damage(10)
+	damage_impact.emit()
 
 
 func _on_thread_flower_count_reached() -> void:

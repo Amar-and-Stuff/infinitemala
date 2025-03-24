@@ -16,7 +16,12 @@ func _input(event: InputEvent) -> void:
 		position += event.relative
 
 
-func take_damage() -> void:
-	health -= 10
+func take_damage(damage: float) -> void:
+	health -= damage
 	if health <= 0:
 		dead.emit()
+
+
+func heal(hp: float) -> void:
+	health += hp
+	health = clamp(health, 0, 100)

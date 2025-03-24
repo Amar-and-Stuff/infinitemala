@@ -2,23 +2,28 @@
 
 [ext_resource type="Script" uid="uid://60r0vg417y8s" path="res://gameobjects/seed.gd" id="1_t0qss"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_lgb04"]
-radius = 19.57
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w4mc8"]
+size = Vector2(30.989, 32.2868)
 
 [node name="Seed" type="Area2D" groups=["seed"]]
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_t0qss")
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
-scale = Vector2(2.12979, 2.04418)
-color = Color(0.377804, 0.251918, 0.131755, 1)
-polygon = PackedVector2Array(3, -17, -12, -8, -17, 0, -11, 13, 10, 14, 17, 2, 10, -10)
-
-[node name="Polygon2D2" type="Polygon2D" parent="."]
-color = Color(0.187722, 0.154354, 0.154354, 1)
-polygon = PackedVector2Array(-35, -2, 0, -3, 32, -2, 36, 3, -36, 0)
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(2.12979, 2.04418)
-shape = SubResource("CircleShape2D_lgb04")
+shape = SubResource("RectangleShape2D_w4mc8")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+scale = Vector2(2.12979, 2.04418)
+color = Color(0.819067, 0.788385, 0.280255, 1)
+polygon = PackedVector2Array(15.964, -15.6542, -15.964, -15.6542, -15.964, -9.78387, -15.025, -9.78387, -15.025, 15.6542, 15.025, 15.6542, 15.025, -9.78387, 15.964, -9.78387)
+
+[node name="Polygon2D3" type="Polygon2D" parent="."]
+scale = Vector2(2.12979, 2.04418)
+color = Color(0.53, 0.51251, 0.1802, 1)
+polygon = PackedVector2Array(15.025, -9.78387, -15.025, -9.78387, -15.025, -8.80549, 15.025, -8.80549)
+
+[node name="Polygon2D2" type="Polygon2D" parent="."]
+color = Color(0.513577, 0, 0, 1)
+polygon = PackedVector2Array(-6, -32, 0, -32, -18, -48, -10, -50, 0, -32, 8, -50, 16, -48, 0, -32, 6, -32, 6, 32, -6, 32)

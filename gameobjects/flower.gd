@@ -14,7 +14,7 @@ func _process(delta: float) -> void:
 
 
 func _on_area_entered(area: Area2D) -> void:
-	if area.is_in_group('seed'):
+	if area.is_in_group('seed') or area.is_in_group('obstacle'):
 		area.queue_free()
 		seed_hit_flower.emit()
 	audio_stream_player.play()

@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://b6qy1hg6onbtk"]
+
+[ext_resource type="Script" uid="uid://bgbjhojt608t2" path="res://world/health.gd" id="1_dc5k7"]
+
+[sub_resource type="Gradient" id="Gradient_hg6uo"]
+colors = PackedColorArray(0.38, 1, 0.679667, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_a8k47"]
+gradient = SubResource("Gradient_hg6uo")
+fill_from = Vector2(0.444444, 0.487179)
+fill_to = Vector2(1, 0.465812)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dc5k7"]
+radius = 45.607
+
+[node name="Health" type="Area2D" groups=["health"]]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_dc5k7")
+
+[node name="Aura" type="Node2D" parent="."]
+scale = Vector2(0.974359, 0.986842)
+
+[node name="Aura2" type="Polygon2D" parent="Aura"]
+rotation = -3.14159
+texture = SubResource("GradientTexture2D_a8k47")
+polygon = PackedVector2Array(18.4737, -46.6133, 36.9474, -26.3467, 37.9737, 22.2933, 18.4737, 43.5733, 46.1842, 21.28, 47.2105, -28.3733)
+uv = PackedVector2Array(16, -2.86102e-06, 24, 24, 24, 40, 16, 64, 40, 40, 40, 24)
+
+[node name="Aura1" type="Polygon2D" parent="Aura"]
+texture = SubResource("GradientTexture2D_a8k47")
+polygon = PackedVector2Array(18.4737, -46.6133, 36.9474, -26.3467, 37.9737, 22.2933, 18.4737, 43.5733, 46.1842, 21.28, 47.2105, -28.3733)
+uv = PackedVector2Array(16, -2.86102e-06, 24, 24, 24, 40, 16, 64, 40, 40, 40, 24)
+
+[node name="Sprite" type="Node2D" parent="."]
+
+[node name="Petals" type="Polygon2D" parent="Sprite"]
+scale = Vector2(0.99033, -0.995123)
+color = Color(0.167464, 0.690082, 0, 1)
+polygon = PackedVector2Array(8.07812, 32.1568, -8.07812, 32.1568, -8.07812, 8.03921, -32.3125, 8.03921, -32.3125, -8.03921, -8.07812, -8.03921, -8.07812, -32.1568, 8.07812, -32.1568, 8.07812, -8.03921, 32.3125, -8.03921, 32.3125, 8.03921, 8.07812, 8.03921)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_dc5k7")

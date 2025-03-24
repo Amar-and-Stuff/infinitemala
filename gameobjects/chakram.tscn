@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=3 uid="uid://bho7cs707b245"]
+
+[ext_resource type="Script" uid="uid://de5u68n34b4wu" path="res://gameobjects/chakram.gd" id="1_hg6uo"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1easb"]
+radius = 27.074
+
+[sub_resource type="Gradient" id="Gradient_hg6uo"]
+colors = PackedColorArray(1, 0.465741, 0.375046, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ucsvl"]
+gradient = SubResource("Gradient_hg6uo")
+fill_from = Vector2(0.444444, 0.487179)
+fill_to = Vector2(1, 0.465812)
+
+[node name="Chakram" type="Area2D" groups=["obstacle"]]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_hg6uo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_1easb")
+
+[node name="Aura" type="Node2D" parent="."]
+scale = Vector2(0.974359, 0.986842)
+
+[node name="Aura2" type="Polygon2D" parent="Aura"]
+rotation = -3.14159
+texture = SubResource("GradientTexture2D_ucsvl")
+polygon = PackedVector2Array(18.4737, -46.6133, 36.9474, -26.3467, 37.9737, 22.2933, 18.4737, 43.5733, 46.1842, 21.28, 47.2105, -28.3733)
+uv = PackedVector2Array(16, -2.86102e-06, 24, 24, 24, 40, 16, 64, 40, 40, 40, 24)
+
+[node name="Aura1" type="Polygon2D" parent="Aura"]
+texture = SubResource("GradientTexture2D_ucsvl")
+polygon = PackedVector2Array(18.4737, -46.6133, 36.9474, -26.3467, 37.9737, 22.2933, 18.4737, 43.5733, 46.1842, 21.28, 47.2105, -28.3733)
+uv = PackedVector2Array(16, -2.86102e-06, 24, 24, 24, 40, 16, 64, 40, 40, 40, 24)
+
+[node name="Sprite" type="Node2D" parent="."]
+
+[node name="Petals" type="Polygon2D" parent="Sprite"]
+scale = Vector2(0.99033, -0.995123)
+color = Color(0.255608, 0.0925029, 0.0925029, 1)
+polygon = PackedVector2Array(0, 32.1568, -8.07812, 8.03921, -32.3125, 0, -8.07812, -8.03921, 0, -32.1568, 8.07812, -8.03921, 32.3125, 0, 8.07812, 8.03921)
+
+[node name="ExtraPetals" type="Polygon2D" parent="Sprite"]
+rotation = 0.785398
+scale = Vector2(0.99033, -0.995123)
+color = Color(0.255608, 0.0925029, 0.0925029, 1)
+polygon = PackedVector2Array(0, 32.1568, -8.07812, 8.03921, -32.3125, 0, -8.07812, -8.03921, 0, -32.1568, 8.07812, -8.03921, 32.3125, 0, 8.07812, 8.03921)

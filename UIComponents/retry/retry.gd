@@ -12,10 +12,10 @@ func _on_retry_pressed() -> void:
 	get_tree().change_scene_to_file(game_scene_file)
 
 
-func initilize(score: int) -> void:
+func initilize(score: int, time_taken: float) -> void:
 	if score == -1:
 		score_lable.text = "You lost"
 		color_rect.color = lost_color
 	else:
-		score_lable.text = "You win"
+		score_lable.text = "You win\ntime: "+str(time_taken)+"s"
 		color_rect.color = win_color
