@@ -1,35 +1,28 @@
 extends Node2D
 
-@onready var player: Area2D = $Player
+
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
-@onready var thread: Path2D = $Thread
+@onready var player_manager: Node2D = $playerManager
+@onready var camera_2d: Camera2D = $Camera2D
 @onready var instance_point: PathFollow2D = $SpawnPath2D/InstancePoint
 const SEED = preload("res://gameobjects/seed.tscn")
 const GAME_OVER_MUSIC = preload("res://music/game_over.mp3")
 const GAME_WIN_MUSIC = preload("res://music/funky-victory-loop-noguitar.mp3")
-@onready var flower_sfx_player: AudioStreamPlayer = $FlowerSFXPlayer
-@onready var seed_sfx_player: AudioStreamPlayer = $SeedSFXPlayer
 @onready var seeds: Node2D = $Seeds
 @onready var retry: Control = $HUD/Retry
+@onready var pause_panel_container: PanelContainer = $HUD/PausePanelContainer
+var game_completed: bool = false
+@onready var background_polygon: Polygon2D = $BackgroundPolygon
 
-# Called when the node enters the scene tree for the first time.
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("esc") and !game_completed:
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		pause_game()
+
+
 func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-
-func _on_player_area_entered(area: Area2D) -> void:
-	if area.is_in_group("seed"):
-		seed_sfx_player.play()
-		area.queue_free()
-		player.add_flower()
-	elif area.is_in_group('flower'):
-		flower_sfx_player.play()
-		area.queue_free()
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 
 func _on_timer_timeout() -> void:
@@ -40,7 +33,8 @@ func _on_timer_timeout() -> void:
 	obstacle_seed.direction = (Vector2(1920/2 + randf_range(-400, 400), 1080/2 + randf_range(-250,250)) - obstacle_seed.position).normalized()
 
 
-func _on_player_dead() -> void:
+func _on_player_manager_dead() -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	retry.initilize(-1)
 	retry.visible = true
 	clear_level()
@@ -48,7 +42,8 @@ func _on_player_dead() -> void:
 	audio_stream_player.play()
 
 
-func _on_player_won() -> void:
+func _on_player_manager_won() -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	retry.initilize(1)
 	retry.visible = true
 	clear_level()
@@ -57,8 +52,18 @@ func _on_player_won() -> void:
 
 
 func clear_level() -> void:
+	game_completed = true
 	$Timer.queue_free()
 	seeds.queue_free()
-	player.queue_free()
-	thread.queue_free()
-	
+	player_manager.queue_free()
+
+
+func pause_game() -> void:
+	pause_panel_container.visible = true
+	get_tree().paused = true
+
+
+func _on_player_manager_seed_impact() -> void:
+	camera_2d.add_trauma(0.5)
+	background_polygon.self_modulate = Color("ffbebe")
+	get_tree().create_tween().tween_property(background_polygon, "self_modulate", Color.WHITE, 0.5)

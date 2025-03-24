@@ -1,27 +1,41 @@
-[gd_scene load_steps=4 format=3 uid="uid://cng66vkdcbp1e"]
+[gd_scene load_steps=5 format=3 uid="uid://cng66vkdcbp1e"]
 
 [ext_resource type="Script" uid="uid://cpwv71q0j2boy" path="res://gameobjects/flower.gd" id="1_siim5"]
 [ext_resource type="AudioStream" uid="uid://d2m6ymi0frsyk" path="res://music/footstep_snow_000.mp3" id="2_n4r3c"]
+[ext_resource type="PackedScene" uid="uid://b8q4i7rm3qc10" path="res://gameobjects/flower_sprite.tscn" id="2_t76vd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vc5f3"]
 radius = 32.0
 
 [node name="Flower" type="Area2D" groups=["flower"]]
+collision_layer = 2
+collision_mask = 5
 script = ExtResource("1_siim5")
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
-scale = Vector2(0.99033, -0.995123)
-color = Color(0.90732, 0.429792, 0.667496, 1)
-polygon = PackedVector2Array(0, 32.1568, -8.07812, 8.03921, -32.3125, 0, -8.07812, -8.03921, 0, -32.1568, 8.07812, -8.03921, 32.3125, 0, 8.07812, 8.03921)
-
-[node name="Polygon2D2" type="Polygon2D" parent="."]
-color = Color(1, 0.8127, 0.401352, 1)
-polygon = PackedVector2Array(0, -7, -4, -5, -6, -1, -4, 3, 0, 5, 4, 3, 6, 0, 4, -5)
+[node name="FlowerSprite" parent="." instance=ExtResource("2_t76vd")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_vc5f3")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_n4r3c")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+emitting = false
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.91
+randomness = 0.14
+lifetime_randomness = 0.13
+emission_shape = 1
+emission_sphere_radius = 16.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 89.82
+initial_velocity_max = 155.69
+damping_min = 100.0
+damping_max = 100.0
+scale_amount_min = 10.0
+scale_amount_max = 10.0
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

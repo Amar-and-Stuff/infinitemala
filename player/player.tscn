@@ -4,7 +4,8 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1vnoc"]
 
-[node name="Player" type="Area2D"]
+[node name="Player" type="Area2D" groups=["player"]]
+collision_mask = 4
 script = ExtResource("1_i48jb")
 
 [node name="Line2D" type="Line2D" parent="."]
@@ -15,203 +16,27 @@ default_color = Color(0.105882, 0.105882, 0.105882, 1)
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 color = Color(0.105882, 0.105882, 0.105882, 1)
-polygon = PackedVector2Array(0, -11, -7, -8, -10, 0, -7, 9, 0, 11, 8, 8, 11, 0, 8, -8)
+polygon = PackedVector2Array(0, -10, -8, -6, -10, 0, -6, 8, 0, 10, 6, 8, 10, 0, 8, -6)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_1vnoc")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="UI" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="HealthBar" type="ProgressBar" parent="CanvasLayer/UI"]
-layout_mode = 1
-offset_left = 127.0
-offset_top = 131.0
-offset_right = 434.0
-offset_bottom = 167.0
-value = 100.0
-show_percentage = false
-
-[node name="Label" type="Label" parent="CanvasLayer/UI/HealthBar"]
-self_modulate = Color(0.791912, 0.125139, 0.125139, 1)
-layout_mode = 0
-offset_left = -23.0
-offset_top = -27.0
-offset_right = 37.0
-offset_bottom = 72.0
-text = "❤️"
-
-[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/UI"]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_left = 33.0
-offset_top = 28.0
-offset_right = -33.0
-offset_bottom = 39.0
-grow_horizontal = 2
-value = 100.0
-show_percentage = false
-
-[node name="Flower" type="Node2D" parent="CanvasLayer/UI/ProgressBar"]
-position = Vector2(0, 6)
-metadata/_edit_group_ = true
-
-[node name="Polygon2D" type="Polygon2D" parent="CanvasLayer/UI/ProgressBar/Flower"]
-scale = Vector2(0.99033, -0.995123)
-color = Color(0.90732, 0.429792, 0.667496, 1)
-polygon = PackedVector2Array(0, 32.1568, -8.07812, 8.03921, -32.3125, 0, -8.07812, -8.03921, 0, -32.1568, 8.07812, -8.03921, 32.3125, 0, 8.07812, 8.03921)
-
-[node name="Polygon2D2" type="Polygon2D" parent="CanvasLayer/UI/ProgressBar/Flower"]
-color = Color(1, 0.8127, 0.401352, 1)
-polygon = PackedVector2Array(0, -7, -4, -5, -6, -1, -4, 3, 0, 5, 4, 3, 6, 0, 4, -5)
-
-[node name="Flower2" type="Node2D" parent="CanvasLayer/UI/ProgressBar"]
-position = Vector2(185.5, 6)
-metadata/_edit_group_ = true
-
-[node name="Polygon2D" type="Polygon2D" parent="CanvasLayer/UI/ProgressBar/Flower2"]
-scale = Vector2(0.99033, -0.995123)
-color = Color(0.90732, 0.429792, 0.667496, 1)
-polygon = PackedVector2Array(0, 32.1568, -8.07812, 8.03921, -32.3125, 0, -8.07812, -8.03921, 0, -32.1568, 8.07812, -8.03921, 32.3125, 0, 8.07812, 8.03921)
-
-[node name="Polygon2D2" type="Polygon2D" parent="CanvasLayer/UI/ProgressBar/Flower2"]
-color = Color(1, 0.8127, 0.401352, 1)
-polygon = PackedVector2Array(0, -7, -4, -5, -6, -1, -4, 3, 0, 5, 4, 3, 6, 0, 4, -5)
-
-[node name="Flower3" type="Node2D" parent="CanvasLayer/UI/ProgressBar"]
-position = Vector2(371, 6)
-metadata/_edit_group_ = true
-
-[node name="Polygon2D" type="Polygon2D" parent="CanvasLayer/UI/ProgressBar/Flower3"]
-scale = Vector2(0.99033, -0.995123)
-color = Color(0.90732, 0.429792, 0.667496, 1)
-polygon = PackedVector2Array(0, 32.1568, -8.07812, 8.03921, -32.3125, 0, -8.07812, -8.03921, 0, -32.1568, 8.07812, -8.03921, 32.3125, 0, 8.07812, 8.03921)
-
-[node name="Polygon2D2" type="Polygon2D" parent="CanvasLayer/UI/ProgressBar/Flower3"]
-color = Color(1, 0.8127, 0.401352, 1)
-polygon = PackedVector2Array(0, -7, -4, -5, -6, -1, -4, 3, 0, 5, 4, 3, 6, 0, 4, -5)
-
-[node name="Flower4" type="Node2D" parent="CanvasLayer/UI/ProgressBar"]
-position = Vector2(556.5, 6)
-metadata/_edit_group_ = true
-
-[node name="Polygon2D" type="Polygon2D" parent="CanvasLayer/UI/ProgressBar/Flower4"]
-scale = Vector2(0.99033, -0.995123)
-color = Color(0.90732, 0.429792, 0.667496, 1)
-polygon = PackedVector2Array(0, 32.1568, -8.07812, 8.03921, -32.3125, 0, -8.07812, -8.03921, 0, -32.1568, 8.07812, -8.03921, 32.3125, 0, 8.07812, 8.03921)
-
-[node name="Polygon2D2" type="Polygon2D" parent="CanvasLayer/UI/ProgressBar/Flower4"]
-color = Color(1, 0.8127, 0.401352, 1)
-polygon = PackedVector2Array(0, -7, -4, -5, -6, -1, -4, 3, 0, 5, 4, 3, 6, 0, 4, -5)
-
-[node name="Flower9" type="Node2D" parent="CanvasLayer/UI/ProgressBar"]
-position = Vector2(1298.5, 6)
-metadata/_edit_group_ = true
-
-[node name="Polygon2D" type="Polygon2D" parent="CanvasLayer/UI/ProgressBar/Flower9"]
-scale = Vector2(0.99033, -0.995123)
-color = Color(0.90732, 0.429792, 0.667496, 1)
-polygon = PackedVector2Array(0, 32.1568, -8.07812, 8.03921, -32.3125, 0, -8.07812, -8.03921, 0, -32.1568, 8.07812, -8.03921, 32.3125, 0, 8.07812, 8.03921)
-
-[node name="Polygon2D2" type="Polygon2D" parent="CanvasLayer/UI/ProgressBar/Flower9"]
-color = Color(1, 0.8127, 0.401352, 1)
-polygon = PackedVector2Array(0, -7, -4, -5, -6, -1, -4, 3, 0, 5, 4, 3, 6, 0, 4, -5)
-
-[node name="Flower11" type="Node2D" parent="CanvasLayer/UI/ProgressBar"]
-position = Vector2(1484, 6)
-metadata/_edit_group_ = true
-
-[node name="Polygon2D" type="Polygon2D" parent="CanvasLayer/UI/ProgressBar/Flower11"]
-scale = Vector2(0.99033, -0.995123)
-color = Color(0.90732, 0.429792, 0.667496, 1)
-polygon = PackedVector2Array(0, 32.1568, -8.07812, 8.03921, -32.3125, 0, -8.07812, -8.03921, 0, -32.1568, 8.07812, -8.03921, 32.3125, 0, 8.07812, 8.03921)
-
-[node name="Polygon2D2" type="Polygon2D" parent="CanvasLayer/UI/ProgressBar/Flower11"]
-color = Color(1, 0.8127, 0.401352, 1)
-polygon = PackedVector2Array(0, -7, -4, -5, -6, -1, -4, 3, 0, 5, 4, 3, 6, 0, 4, -5)
-
-[node name="Flower13" type="Node2D" parent="CanvasLayer/UI/ProgressBar"]
-position = Vector2(1669.5, 6)
-metadata/_edit_group_ = true
-
-[node name="Polygon2D" type="Polygon2D" parent="CanvasLayer/UI/ProgressBar/Flower13"]
-scale = Vector2(0.99033, -0.995123)
-color = Color(0.90732, 0.429792, 0.667496, 1)
-polygon = PackedVector2Array(0, 32.1568, -8.07812, 8.03921, -32.3125, 0, -8.07812, -8.03921, 0, -32.1568, 8.07812, -8.03921, 32.3125, 0, 8.07812, 8.03921)
-
-[node name="Polygon2D2" type="Polygon2D" parent="CanvasLayer/UI/ProgressBar/Flower13"]
-color = Color(1, 0.8127, 0.401352, 1)
-polygon = PackedVector2Array(0, -7, -4, -5, -6, -1, -4, 3, 0, 5, 4, 3, 6, 0, 4, -5)
-
-[node name="Flower14" type="Node2D" parent="CanvasLayer/UI/ProgressBar"]
-position = Vector2(1855, 6)
-metadata/_edit_group_ = true
-
-[node name="Polygon2D" type="Polygon2D" parent="CanvasLayer/UI/ProgressBar/Flower14"]
-scale = Vector2(0.99033, -0.995123)
-color = Color(0.90732, 0.429792, 0.667496, 1)
-polygon = PackedVector2Array(0, 32.1568, -8.07812, 8.03921, -32.3125, 0, -8.07812, -8.03921, 0, -32.1568, 8.07812, -8.03921, 32.3125, 0, 8.07812, 8.03921)
-
-[node name="Polygon2D2" type="Polygon2D" parent="CanvasLayer/UI/ProgressBar/Flower14"]
-color = Color(1, 0.8127, 0.401352, 1)
-polygon = PackedVector2Array(0, -7, -4, -5, -6, -1, -4, 3, 0, 5, 4, 3, 6, 0, 4, -5)
-
-[node name="Flower15" type="Node2D" parent="CanvasLayer/UI/ProgressBar"]
-position = Vector2(1113, 5)
-metadata/_edit_group_ = true
-
-[node name="Polygon2D" type="Polygon2D" parent="CanvasLayer/UI/ProgressBar/Flower15"]
-scale = Vector2(0.99033, -0.995123)
-color = Color(0.90732, 0.429792, 0.667496, 1)
-polygon = PackedVector2Array(0, 32.1568, -8.07812, 8.03921, -32.3125, 0, -8.07812, -8.03921, 0, -32.1568, 8.07812, -8.03921, 32.3125, 0, 8.07812, 8.03921)
-
-[node name="Polygon2D2" type="Polygon2D" parent="CanvasLayer/UI/ProgressBar/Flower15"]
-color = Color(1, 0.8127, 0.401352, 1)
-polygon = PackedVector2Array(0, -7, -4, -5, -6, -1, -4, 3, 0, 5, 4, 3, 6, 0, 4, -5)
-
-[node name="Flower16" type="Node2D" parent="CanvasLayer/UI/ProgressBar"]
-position = Vector2(927.5, 7)
-metadata/_edit_group_ = true
-
-[node name="Polygon2D" type="Polygon2D" parent="CanvasLayer/UI/ProgressBar/Flower16"]
-scale = Vector2(0.99033, -0.995123)
-color = Color(0.90732, 0.429792, 0.667496, 1)
-polygon = PackedVector2Array(0, 32.1568, -8.07812, 8.03921, -32.3125, 0, -8.07812, -8.03921, 0, -32.1568, 8.07812, -8.03921, 32.3125, 0, 8.07812, 8.03921)
-
-[node name="Polygon2D2" type="Polygon2D" parent="CanvasLayer/UI/ProgressBar/Flower16"]
-color = Color(1, 0.8127, 0.401352, 1)
-polygon = PackedVector2Array(0, -7, -4, -5, -6, -1, -4, 3, 0, 5, 4, 3, 6, 0, 4, -5)
-
-[node name="Flower17" type="Node2D" parent="CanvasLayer/UI/ProgressBar"]
-position = Vector2(742, 5)
-metadata/_edit_group_ = true
-
-[node name="Polygon2D" type="Polygon2D" parent="CanvasLayer/UI/ProgressBar/Flower17"]
-scale = Vector2(0.99033, -0.995123)
-color = Color(0.90732, 0.429792, 0.667496, 1)
-polygon = PackedVector2Array(0, 32.1568, -8.07812, 8.03921, -32.3125, 0, -8.07812, -8.03921, 0, -32.1568, 8.07812, -8.03921, 32.3125, 0, 8.07812, 8.03921)
-
-[node name="Polygon2D2" type="Polygon2D" parent="CanvasLayer/UI/ProgressBar/Flower17"]
-color = Color(1, 0.8127, 0.401352, 1)
-polygon = PackedVector2Array(0, -7, -4, -5, -6, -1, -4, 3, 0, 5, 4, 3, 6, 0, 4, -5)
-
-[node name="Flower18" type="Node2D" parent="CanvasLayer/UI/ProgressBar"]
-position = Vector2(556.5, 7)
-metadata/_edit_group_ = true
-
-[node name="Polygon2D" type="Polygon2D" parent="CanvasLayer/UI/ProgressBar/Flower18"]
-scale = Vector2(0.99033, -0.995123)
-color = Color(0.90732, 0.429792, 0.667496, 1)
-polygon = PackedVector2Array(0, 32.1568, -8.07812, 8.03921, -32.3125, 0, -8.07812, -8.03921, 0, -32.1568, 8.07812, -8.03921, 32.3125, 0, 8.07812, 8.03921)
-
-[node name="Polygon2D2" type="Polygon2D" parent="CanvasLayer/UI/ProgressBar/Flower18"]
-color = Color(1, 0.8127, 0.401352, 1)
-polygon = PackedVector2Array(0, -7, -4, -5, -6, -1, -4, 3, 0, 5, 4, 3, 6, 0, 4, -5)
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+emitting = false
+lifetime = 0.25
+one_shot = true
+explosiveness = 0.91
+randomness = 0.14
+lifetime_randomness = 0.13
+emission_shape = 1
+emission_sphere_radius = 16.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 89.82
+initial_velocity_max = 155.69
+damping_min = 100.0
+damping_max = 100.0
+angle_min = -491.5
+angle_max = 168.1
+scale_amount_min = 10.0
+scale_amount_max = 10.0

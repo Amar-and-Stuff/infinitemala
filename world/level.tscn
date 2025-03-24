@@ -1,12 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://8i1iogbundoh"]
+[gd_scene load_steps=8 format=3 uid="uid://8i1iogbundoh"]
 
-[ext_resource type="PackedScene" uid="uid://e6wf7ccxvdjm" path="res://player/player.tscn" id="1_olurn"]
 [ext_resource type="Script" uid="uid://dpfxxljyicr7o" path="res://world/level.gd" id="1_tap5u"]
-[ext_resource type="PackedScene" uid="uid://bof3fsgimcmlt" path="res://player/thread.tscn" id="2_70ls8"]
+[ext_resource type="PackedScene" uid="uid://c8g3yu3sot3l4" path="res://player/player_manager.tscn" id="4_3vqyw"]
+[ext_resource type="Script" uid="uid://bogtx4pcn0bd" path="res://UIComponents/pause_panel_container.gd" id="5_aohy4"]
 [ext_resource type="AudioStream" uid="uid://cty54k5svhrca" path="res://music/action loop.wav" id="5_oh72w"]
 [ext_resource type="PackedScene" uid="uid://bdoov14pa7dr4" path="res://UIComponents/retry/retry.tscn" id="5_ype84"]
-[ext_resource type="AudioStream" uid="uid://d2m6ymi0frsyk" path="res://music/footstep_snow_000.mp3" id="6_paclj"]
-[ext_resource type="AudioStream" uid="uid://bo2kuycrkv7l0" path="res://music/impactWood_light_002.mp3" id="7_aohy4"]
+[ext_resource type="Script" uid="uid://dqo38f2e5kyg2" path="res://world/camera_2d.gd" id="9_iu21s"]
 
 [sub_resource type="Curve2D" id="Curve2D_tap5u"]
 _data = {
@@ -17,15 +16,13 @@ point_count = 5
 [node name="Level" type="Node2D"]
 script = ExtResource("1_tap5u")
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
-color = Color(0.873376, 0.746503, 0.494126, 1)
+[node name="BackgroundPolygon" type="Polygon2D" parent="."]
+modulate = Color(0.961629, 0.961629, 0.961629, 1)
+color = Color(0.57, 0.5472, 0.5016, 1)
 polygon = PackedVector2Array(-28, -39, -41, 1161, 2037, 1154, 2009, -51)
 
-[node name="Player" parent="." node_paths=PackedStringArray("thread") instance=ExtResource("1_olurn")]
-thread = NodePath("../Thread")
-
-[node name="Thread" parent="." node_paths=PackedStringArray("follow_node") instance=ExtResource("2_70ls8")]
-follow_node = NodePath("../Player")
+[node name="playerManager" parent="." instance=ExtResource("4_3vqyw")]
+position = Vector2(940, 380)
 
 [node name="Seeds" type="Node2D" parent="."]
 
@@ -45,18 +42,33 @@ autostart = true
 visible = false
 bg_color = Color(0.264662, 0.651978, 0.893742, 1)
 
+[node name="PausePanelContainer" type="PanelContainer" parent="HUD"]
+process_mode = 2
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_aohy4")
+
+[node name="Label" type="Label" parent="HUD/PausePanelContainer"]
+process_mode = 2
+layout_mode = 2
+text = "Click to continue"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_oh72w")
 volume_db = -11.039
 autoplay = true
 
-[node name="FlowerSFXPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("6_paclj")
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(960, 540)
+script = ExtResource("9_iu21s")
 
-[node name="SeedSFXPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("7_aohy4")
-
-[connection signal="area_entered" from="Player" to="." method="_on_player_area_entered"]
-[connection signal="dead" from="Player" to="." method="_on_player_dead"]
-[connection signal="won" from="Player" to="." method="_on_player_won"]
+[connection signal="dead" from="playerManager" to="." method="_on_player_manager_dead"]
+[connection signal="seed_impact" from="playerManager" to="." method="_on_player_manager_seed_impact"]
+[connection signal="won" from="playerManager" to="." method="_on_player_manager_won"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
