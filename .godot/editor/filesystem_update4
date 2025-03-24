@@ -13,3 +13,5 @@ res://UIComponents/pause_panel_container.gd
 res://UIComponents/retry/retry.tscn
 res://UIComponents/retry/retry.gd
 res://gameobjects/seed.gd
+res://node_2d.tscn
+res://player/player.gd

@@ -13,7 +13,7 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
-		position += event.relative
+		position += event.relative * 1.5
 
 
 func take_damage(damage: float) -> void:

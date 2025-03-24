@@ -1,0 +1,242 @@
+[gd_scene load_steps=3 format=3 uid="uid://6g7a6u3k3nrb"]
+
+[ext_resource type="PackedScene" uid="uid://cng66vkdcbp1e" path="res://gameobjects/flower.tscn" id="1_0e48y"]
+
+[sub_resource type="Curve2D" id="Curve2D_wtcfe"]
+_data = {
+"points": PackedVector2Array(-49, 0, 49, 0, 1128, 414, -1, -44, 1, 44, 1276, 536, 73, -2, -73, 2, 1132, 658, 0, 0, 0, 0, 914, 534, 82, 1, -82, -1, 688, 410, 1, -61, -1, 61, 534, 526, -95, 3, 95, -3, 696, 666, 0, 0, 0, 0, 914, 534, -46, -8, 46, 8, 1126, 412)
+}
+point_count = 9
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(0.615407, 0.575006, 0.530302, 1)
+polygon = PackedVector2Array(-44, -58, 2029, -65, 2010, 1144, -103, 1118)
+
+[node name="path" type="Path2D" parent="."]
+position = Vector2(-378, -270)
+scale = Vector2(1.505, 1.505)
+curve = SubResource("Curve2D_wtcfe")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="path"]
+position = Vector2(1128, 414)
+
+[node name="Flower" parent="path/PathFollow2D" instance=ExtResource("1_0e48y")]
+
+[node name="PathFollow2D2" type="PathFollow2D" parent="path"]
+position = Vector2(1232.3, 469.094)
+rotation = 0.73991
+progress = 120.0
+
+[node name="Flower" parent="path/PathFollow2D2" instance=ExtResource("1_0e48y")]
+
+[node name="PathFollow2D3" type="PathFollow2D" parent="path"]
+position = Vector2(1184.08, 433.573)
+rotation = 0.525573
+progress = 60.0
+
+[node name="Flower" parent="path/PathFollow2D3" instance=ExtResource("1_0e48y")]
+
+[node name="PathFollow2D4" type="PathFollow2D" parent="path"]
+position = Vector2(1270.04, 515.349)
+rotation = 1.10646
+progress = 180.0
+
+[node name="Flower" parent="path/PathFollow2D4" instance=ExtResource("1_0e48y")]
+
+[node name="PathFollow2D5" type="PathFollow2D" parent="path"]
+position = Vector2(1264.83, 572.217)
+rotation = 2.08656
+progress = 240.0
+
+[node name="Flower" parent="path/PathFollow2D5" instance=ExtResource("1_0e48y")]
+
+[node name="PathFollow2D6" type="PathFollow2D" parent="path"]
+position = Vector2(1226.14, 617.698)
+rotation = 2.43711
+progress = 300.0
+
+[node name="Flower" parent="path/PathFollow2D6" instance=ExtResource("1_0e48y")]
+
+[node name="PathFollow2D7" type="PathFollow2D" parent="path"]
+position = Vector2(1175.12, 648.761)
+rotation = 2.76755
+progress = 360.0
+
+[node name="Flower" parent="path/PathFollow2D7" instance=ExtResource("1_0e48y")]
+
+[node name="PathFollow2D8" type="PathFollow2D" parent="path"]
+position = Vector2(1116.41, 656.752)
+rotation = -2.97188
+progress = 420.0
+
+[node name="Flower" parent="path/PathFollow2D8" instance=ExtResource("1_0e48y")]
+
+[node name="PathFollow2D9" type="PathFollow2D" parent="path"]
+position = Vector2(1060.3, 636.069)
+rotation = -2.6699
+progress = 480.0
+
+[node name="Flower" parent="path/PathFollow2D9" instance=ExtResource("1_0e48y")]
+
+[node name="PathFollow2D10" type="PathFollow2D" parent="path"]
+position = Vector2(1008.67, 605.552)
+rotation = -2.55826
+progress = 540.0
+
+[node name="Flower" parent="path/PathFollow2D10" instance=ExtResource("1_0e48y")]
+
+[node name="PathFollow2D11" type="PathFollow2D" parent="path"]
+position = Vector2(959.783, 570.783)
+rotation = -2.49258
+progress = 600.0
+
+[node name="Flower" parent="path/PathFollow2D11" instance=ExtResource("1_0e48y")]
+
+[node name="PathFollow2D12" type="PathFollow2D" parent="path"]
+position = Vector2(913.063, 533.206)
+rotation = -2.51832
+progress = 660.0
+
+[node name="Flower" parent="path/PathFollow2D12" instance=ExtResource("1_0e48y")]
+
+[node name="PathFollow2D13" type="PathFollow2D" parent="path"]
+position = Vector2(816.3, 462.318)
+rotation = -2.57664
+progress = 780.0
+
+[node name="Flower" parent="path/PathFollow2D13" instance=ExtResource("1_0e48y")]
+
+[node name="PathFollow2D14" type="PathFollow2D" parent="path"]
+position = Vector2(865.783, 496.253)
+rotation = -2.50813
+progress = 720.0
+
+[node name="Flower" parent="path/PathFollow2D14" instance=ExtResource("1_0e48y")]
+
+[node name="PathFollow2D15" type="PathFollow2D" parent="path"]
+position = Vector2(764.117, 432.763)
+rotation = -2.68712
+progress = 840.0
+
+[node name="Flower" parent="path/PathFollow2D15" instance=ExtResource("1_0e48y")]
+
+[node name="PathFollow2D16" type="PathFollow2D" parent="path"]
+position = Vector2(707.885, 412.276)
+rotation = -2.94191
+progress = 900.0
+
+[node name="Flower" parent="path/PathFollow2D16" instance=ExtResource("1_0e48y")]
+
+[node name="PathFollow2D17" type="PathFollow2D" parent="path"]
+position = Vector2(648.327, 413.98)
+rotation = 2.92978
+progress = 960.0
+
+[node name="Flower" parent="path/PathFollow2D17" instance=ExtResource("1_0e48y")]
+
+[node name="PathFollow2D18" type="PathFollow2D" parent="path"]
+position = Vector2(592.929, 436.246)
+rotation = 2.5837
+progress = 1020.0
+
+[node name="Flower" parent="path/PathFollow2D18" instance=ExtResource("1_0e48y")]
+
+[node name="PathFollow2D19" type="PathFollow2D" parent="path"]
+position = Vector2(549.842, 477.331)
+rotation = 2.14956
+progress = 1080.0
+
+[node name="Flower" parent="path/PathFollow2D19" instance=ExtResource("1_0e48y")]
+
+[node name="PathFollow2D20" type="PathFollow2D" parent="path"]
+position = Vector2(534.262, 534.123)
+rotation = 1.49184
+progress = 1140.0
+
+[node name="Flower" parent="path/PathFollow2D20" instance=ExtResource("1_0e48y")]
+
+[node name="PathFollow2D21" type="PathFollow2D" parent="path"]
+position = Vector2(554.412, 590.024)
+rotation = 1.00333
+progress = 1200.0
+
+[node name="Flower" parent="path/PathFollow2D21" instance=ExtResource("1_0e48y")]
+
+[node name="PathFollow2D22" type="PathFollow2D" parent="path"]
+position = Vector2(595.085, 633.7)
+rotation = 0.643164
+progress = 1260.0
+
+[node name="Flower" parent="path/PathFollow2D22" instance=ExtResource("1_0e48y")]
+
+[node name="PathFollow2D23" type="PathFollow2D" parent="path"]
+position = Vector2(648.516, 660.245)
+rotation = 0.274081
+progress = 1320.0
+
+[node name="Flower" parent="path/PathFollow2D23" instance=ExtResource("1_0e48y")]
+
+[node name="PathFollow2D24" type="PathFollow2D" parent="path"]
+position = Vector2(707.932, 664.998)
+rotation = -0.132872
+progress = 1380.0
+
+[node name="Flower" parent="path/PathFollow2D24" instance=ExtResource("1_0e48y")]
+
+[node name="PathFollow2D25" type="PathFollow2D" parent="path"]
+position = Vector2(764.833, 646.714)
+rotation = -0.446194
+progress = 1440.0
+
+[node name="Flower" parent="path/PathFollow2D25" instance=ExtResource("1_0e48y")]
+
+[node name="PathFollow2D26" type="PathFollow2D" parent="path"]
+position = Vector2(816.527, 616.368)
+rotation = -0.600777
+progress = 1500.0
+
+[node name="Flower" parent="path/PathFollow2D26" instance=ExtResource("1_0e48y")]
+
+[node name="PathFollow2D27" type="PathFollow2D" parent="path"]
+position = Vector2(864.198, 579.958)
+rotation = -0.698166
+progress = 1560.0
+
+[node name="Flower" parent="path/PathFollow2D27" instance=ExtResource("1_0e48y")]
+
+[node name="PathFollow2D28" type="PathFollow2D" parent="path"]
+position = Vector2(908.522, 539.556)
+rotation = -0.783172
+progress = 1620.0
+
+[node name="Flower" parent="path/PathFollow2D28" instance=ExtResource("1_0e48y")]
+
+[node name="PathFollow2D29" type="PathFollow2D" parent="path"]
+position = Vector2(955.775, 502.736)
+rotation = -0.626892
+progress = 1680.0
+
+[node name="Flower" parent="path/PathFollow2D29" instance=ExtResource("1_0e48y")]
+
+[node name="PathFollow2D30" type="PathFollow2D" parent="path"]
+position = Vector2(1005.04, 468.474)
+rotation = -0.585681
+progress = 1740.0
+
+[node name="Flower" parent="path/PathFollow2D30" instance=ExtResource("1_0e48y")]
+
+[node name="PathFollow2D31" type="PathFollow2D" parent="path"]
+position = Vector2(1055.96, 437.023)
+rotation = -0.510925
+progress = 1800.0
+
+[node name="Flower" parent="path/PathFollow2D31" instance=ExtResource("1_0e48y")]
+
+[node name="PathFollow2D32" type="PathFollow2D" parent="path"]
+position = Vector2(1106.4, 414.137)
+rotation = -0.274997
+progress = 1855.35
+
+[node name="Flower" parent="path/PathFollow2D32" instance=ExtResource("1_0e48y")]
